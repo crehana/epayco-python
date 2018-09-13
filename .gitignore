@@ -9,3 +9,5 @@ build/*
 
 #Ignore idea
 idea/*
+
+pyepayco/__pycache__/

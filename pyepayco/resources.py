@@ -1,6 +1,7 @@
 from pyepayco.client import Client
 import pyepayco.errors as errors
 
+
 class Resource(Client):
     """
      * Instance epayco class
@@ -25,7 +26,6 @@ class Token(Resource):
     """
 
     def create(self, options):
-
         return self.request(
             "POST",
             "v1/tokens",
@@ -97,8 +97,7 @@ class Customers(Resource):
             self.epayco.lang
         )
 
-    def update(self,uid,options):
-
+    def update(self, uid, options):
         return self.request(
             "POST",
             "payment/v1/customer/edit/" + self.epayco.api_key + "/" + uid + "/",
@@ -110,9 +109,11 @@ class Customers(Resource):
             self.epayco.lang
         )
 
+
 """
  * Class Charge
 """
+
 
 class Charge(Resource):
     """
@@ -134,7 +135,6 @@ class Charge(Resource):
         )
 
     def get(self, uid):
-
         return self.request(
             "GET",
             "restpagos/transaction/response.json",
@@ -145,6 +145,8 @@ class Charge(Resource):
             True,
             self.epayco.lang
         )
+
+
 """
  * Plan methods
 """
@@ -179,7 +181,7 @@ class Plan(Resource):
         options = None
         return self.request(
             "GET",
-            "recurring/v1/plan/" + self.epayco.api_key + "/"+uid,
+            "recurring/v1/plan/" + self.epayco.api_key + "/" + uid,
             self.epayco.api_key,
             options,
             self.epayco.private_key,
@@ -226,8 +228,8 @@ class Plan(Resource):
             self.epayco.lang
         )
 
-    def delete(self,uid):
-        options={}
+    def delete(self, uid):
+        options = {}
         return self.request(
             "POST",
             "recurring/v1/plan/remove/" + self.epayco.api_key + "/" + uid + "/",
@@ -238,6 +240,7 @@ class Plan(Resource):
             False,
             self.epayco.lang
         )
+
 
 """
  * Create subcription from clients
@@ -323,7 +326,6 @@ class Subscriptions(Resource):
         )
 
     def charge(self, options=None):
-
         return self.request(
             "POST",
             "payment/v1/charge/subscription/create",
@@ -334,6 +336,7 @@ class Subscriptions(Resource):
             False,
             self.epayco.lang
         )
+
 
 """
  * Pse methods
@@ -346,12 +349,12 @@ class Bank(Resource):
      * @return object
     """
 
-    def pseBank(self,options = None):
+    def pseBank(self, options=None):
         return self.request(
             "GET",
             "restpagos/pse/bancos.json",
             self.epayco.api_key,
-            {'public_key':self.epayco.api_key},
+            {'public_key': self.epayco.api_key},
             self.epayco.private_key,
             self.epayco.test,
             True,
@@ -387,7 +390,7 @@ class Bank(Resource):
             "GET",
             "restpagos/pse/transactioninfomation.json",
             self.epayco.api_key,
-            {'transactionID':uid},
+            {'transactionID': uid},
             self.epayco.private_key,
             self.epayco.test,
             True,
@@ -395,7 +398,6 @@ class Bank(Resource):
         )
 
     def get(self, uid):
-
         return self.request(
             "GET",
             "restpagos/transaction/response.json",
@@ -406,6 +408,8 @@ class Bank(Resource):
             True,
             self.epayco.lang
         )
+
+
 """
  * Cash payment methods
 """
@@ -422,11 +426,11 @@ class Cash(Resource):
     def create(self, type=None, options=None):
 
         url = None
-        if (type == "efecty"):
+        if type == "efecty":
             url = "restpagos/pagos/efecties.json"
-        elif (type == "baloto"):
+        elif type == "baloto":
             url = "restpagos/pagos/balotos.json"
-        elif (type == "gana"):
+        elif type == "gana":
             url = "restpagos/pagos/ganas.json"
         else:
             raise errors.ErrorException(self.epayco.lang, 109)
