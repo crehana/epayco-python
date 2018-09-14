@@ -1,21 +1,23 @@
-#!/usr/bin/env python3
+from setuptools import setup, find_packages
 
-from distutils.core import setup
+
+# from distutils.core import setup
+install_requires = [
+    "requests >= 2.4.3",
+    "pycrypto >= 2.3"
+]
 
 setup(
     name="pyepayco",
     version="1.0.0",
     author="ePayco Development Team",
     author_email="desarrollo@epayco.co",
-    packages=['pyepayco'],
+    packages=find_packages(),
     url='https://epayco.co/',
     download_url="https://github.com/lamurga/epayco-python",
     license="MIT",
     description="Python library for ePayco Payment API",
     long_description="Basic python library to interact with ePayco Payment API",
-    install_requires=[
-        "requests >= 2.4.3",
-        "pycrypto >= 2.3"
-    ],
+    install_requires=install_requires,
     include_package_data=True,
 )
