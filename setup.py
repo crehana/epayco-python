@@ -9,7 +9,7 @@ setup(
     author_email="desarrollo@epayco.co",
     packages=['pyepayco'],
     url='https://epayco.co/',
-    download_url="https://github.com/epayco/epayco-python",
+    download_url="https://github.com/lamurga/epayco-python",
     license="MIT",
     description="Python library for ePayco Payment API",
     long_description="Basic python library to interact with ePayco Payment API",
