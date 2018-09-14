@@ -1,7 +1,11 @@
-from setuptools import setup, find_packages
+try:
+    from setuptools import setup, find_packages
+except ImportError:
+    from distutils.core import setup
 
+    def find_packages():
+        return ['pyepayco']
 
-# from distutils.core import setup
 install_requires = [
     "requests >= 2.4.3",
     "pycrypto >= 2.3"

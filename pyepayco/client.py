@@ -1,3 +1,4 @@
+import os
 import ssl
 import json
 import base64
@@ -39,7 +40,7 @@ class AESCipher:
 class Util():
 
     def setKeys(self, array={}):
-        file = open('pyepayco/utils/key_lang.json', 'r').read()
+        file = open(os.path.join(os.path.dirname(__file__), 'utils/key_lang.json'), 'r').read()
         values = json.loads(file)
         aux = {}
         for key, value in array.items():
