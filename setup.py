@@ -17,4 +17,5 @@ setup(
         "requests >= 2.4.3",
         "pycrypto >= 2.3"
     ],
+    include_package_data=True,
 )
